@@ -13,6 +13,9 @@ namespace Forms
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        #region Property
+
         /// <summary>
         /// Contient toutes les données du form
         /// </summary>
@@ -23,19 +26,28 @@ namespace Forms
         /// </summary>
         Grid mainGrid = new Grid();
 
+        #endregion
+
+        #region Constructeur
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        #endregion
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeFormDataTest();
-            //InitializeFormDataAbcd();
+            //InitializeFormDataTest();
+            InitializeFormDataAbcd();
 
             GenerateGrid(formData.Field, mainGrid);
             scrollViewer.Children.Add(mainGrid);
         }
+
+
+
 
 
         /// <summary>
@@ -58,6 +70,10 @@ namespace Forms
                     case EnumTypeComponent.Combobox:
                         break;
                     case EnumTypeComponent.Label:
+
+                        control = GenerateLabel(item);
+                        currentGrid.Children.Add(control);
+
                         break;
                     case EnumTypeComponent.Grid:
 
@@ -113,7 +129,6 @@ namespace Forms
 
             }
         }
-
 
         /// <summary>
         /// Initialisation de l'objet formData avec des données de test
@@ -177,7 +192,8 @@ namespace Forms
                                                    StringValue = "test d'un contenu"
                                                }
 
-                                           }
+                                           },
+
                                        }
                                    },
                                    new FieldData()
@@ -219,10 +235,44 @@ namespace Forms
                 HorizontalSpaceType = EnumSpaceType.Star,
                 VerticalSpaceUsage = 1,
                 VerticalSpaceType = EnumSpaceType.Star,
-                BackgroundHexColor = "#000000",
+                BackgroundHexColor = "#FFFFFF",
                 Fields = new List<FieldData>()
                 {
-
+                    new FieldData()
+                    {
+                        Name= "GridTitle",
+                        TypeComponent = EnumTypeComponent.Grid,
+                        HorizontalSpaceUsage = 1,
+                        HorizontalSpaceType = EnumSpaceType.Star,
+                        VerticalSpaceUsage = 1,
+                        VerticalSpaceType = EnumSpaceType.Auto,
+                        BackgroundHexColor ="#8F969C",
+                        Fields = new List<FieldData>()
+                        {
+                            new FieldData()
+                            {
+                                Name= "LabelbilanUrgenceVital",
+                                TypeComponent = EnumTypeComponent.Label,
+                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                VerticalSpaceUsage=1,
+                                VerticalSpaceType= EnumSpaceType.Auto,
+                                HorizontalSpaceUsage=1,
+                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                BackgroundHexColor="#00000000",
+                                ForeGroundHexColor="#FFFFFF",
+                                FontWeight = EnumFontWeight.SemiBold,
+                                FontSize = EnumFontSize._12,
+                                DataValueType = EnumDataValuesType.StringValue,
+                                Data= new DataValues()
+                                {
+                                    StringValue="BILAN D'URGENCE VITALE"
+                                }
+                            }
+                        }
+                    }
                 }
 
             }
@@ -242,6 +292,18 @@ namespace Forms
                 _ => VerticalAlignment.Center,
             };
         }
+        private VerticalAlignment GetVerticalContentAlignment(EnumContentVerticalAlignement verticalAlignement)
+        {
+            return verticalAlignement switch
+            {
+                EnumContentVerticalAlignement.NonRenseigne => VerticalAlignment.Stretch,
+                EnumContentVerticalAlignement.Bottom => VerticalAlignment.Bottom,
+                EnumContentVerticalAlignement.Center => VerticalAlignment.Center,
+                EnumContentVerticalAlignement.Top => VerticalAlignment.Top,
+                EnumContentVerticalAlignement.Stretch => VerticalAlignment.Stretch,
+                _ => VerticalAlignment.Center,
+            };
+        }
 
         private HorizontalAlignment GetHorizontalAlignment(EnumHorizontalAlignement horizontalAlignement)
         {
@@ -256,6 +318,18 @@ namespace Forms
             };
         }
 
+        private HorizontalAlignment GetHorizontalContentAlignment(EnumContentHorizontalAlignement horizontalAlignement)
+        {
+            return horizontalAlignement switch
+            {
+                EnumContentHorizontalAlignement.NonRenseigne => HorizontalAlignment.Stretch,
+                EnumContentHorizontalAlignement.Left => HorizontalAlignment.Left,
+                EnumContentHorizontalAlignement.Center => HorizontalAlignment.Center,
+                EnumContentHorizontalAlignement.Right => HorizontalAlignment.Right,
+                EnumContentHorizontalAlignement.Stretch => HorizontalAlignment.Stretch,
+                _ => HorizontalAlignment.Left,
+            };
+        }
         private GridUnitType GetGridUnitType(EnumSpaceType spaceType)
         {
             return spaceType switch
@@ -264,6 +338,45 @@ namespace Forms
                 EnumSpaceType.Star => GridUnitType.Star,
                 EnumSpaceType.Auto => GridUnitType.Auto,
                 _ => GridUnitType.Pixel,
+            };
+        }
+
+        private FontWeight GetFontWeight(EnumFontWeight fontWeight)
+        {
+            return fontWeight switch
+            {
+                EnumFontWeight.Black => FontWeights.Black,
+                EnumFontWeight.Bold => FontWeights.Bold,
+                EnumFontWeight.DemiBold => FontWeights.DemiBold,
+                EnumFontWeight.ExtraBlack => FontWeights.ExtraBlack,
+                EnumFontWeight.ExtraBold => FontWeights.ExtraBold,
+                EnumFontWeight.ExtraLight => FontWeights.ExtraLight,
+                EnumFontWeight.Heavy => FontWeights.Heavy,
+                EnumFontWeight.Light => FontWeights.Light,
+                EnumFontWeight.Medium => FontWeights.Medium,
+                EnumFontWeight.Normal => FontWeights.Normal,
+                EnumFontWeight.Regular => FontWeights.Regular,
+                EnumFontWeight.SemiBold => FontWeights.SemiBold,
+                EnumFontWeight.Thin => FontWeights.Thin,
+                EnumFontWeight.UltraBlack => FontWeights.UltraBlack,
+                EnumFontWeight.UltraBold => FontWeights.UltraBold,
+                EnumFontWeight.UltraLight => FontWeights.UltraLight,
+                _ => FontWeights.Normal,
+            };
+        }
+
+        private double GenerateFontSize(EnumFontSize fontSize)
+        {
+            return fontSize switch
+            {
+                EnumFontSize._8 => 8,
+                EnumFontSize._10 => 10,
+                EnumFontSize._12 => 12,
+                EnumFontSize._14 => 14,
+                EnumFontSize._16 => 16,
+                EnumFontSize._18 => 18,
+                EnumFontSize._20 => 20,
+                _ => 12,
             };
         }
 
@@ -347,7 +460,32 @@ namespace Forms
             };
         }
 
+        /// <summary>
+        /// Genere un label depuis un FieldData
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private Label GenerateLabel(FieldData item)
+        {
+            return new Label()
+            {
+                Name = item.Name,
+                Content = (string)GetDataFromDataValuestype(item),
 
+                HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
+                VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
+                HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
+                VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
+                Margin = item.Margin,
+                Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
+                Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
+                FontWeight = GetFontWeight(item.FontWeight),
+                FontSize = GenerateFontSize(item.FontSize),
+                Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
+                Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
+            };
+        }
         #endregion
+
     }
 }

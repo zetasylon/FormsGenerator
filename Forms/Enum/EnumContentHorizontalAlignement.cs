@@ -9,6 +9,7 @@ namespace Forms.Enum
         NonRenseigne = 0,
         Left = 1,
         Center = 2,
-        Right = 3
+        Right = 3,
+        Stretch =4
     }
 }

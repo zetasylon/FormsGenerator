@@ -1,4 +1,5 @@
 ﻿using Forms.Enum;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -12,9 +13,11 @@ namespace Forms.Models
             VerticalAlignement = EnumVerticalAlignement.Stretch;
             Data = new DataValues();
             Fields = new List<FieldData>();
+            Id = Guid.NewGuid();
         }
 
         public string Name { get; set; }
+        public Guid Id { get; set; }
         public EnumTypeComponent TypeComponent { get; set; }
         public EnumHorizontalAlignement HorizontalAlignement { get; set; }
         public EnumVerticalAlignement VerticalAlignement { get; set; }
@@ -25,6 +28,8 @@ namespace Forms.Models
         public EnumSpaceType HorizontalSpaceType { get; set; }
         public EnumSpaceType VerticalSpaceType { get; set; }
         public EnumDataValuesType DataValueType { get; set; }
+        public EnumFontWeight FontWeight { get; set; }
+        public EnumFontSize FontSize { get; set; }
         public int RowIndex { get; set; }
         public int RowSpan { get; set; }
         public int ColumnIndex { get; set; }
