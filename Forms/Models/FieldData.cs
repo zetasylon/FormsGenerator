@@ -38,7 +38,9 @@ namespace Forms.Models
         public double VerticalSpaceUsage { get; set; }
         public string BackgroundHexColor { get; set; }
         public string ForeGroundHexColor { get; set; }
+        public string BorderHexColor { get; set; }
         public Thickness Margin { get; set; }
+        public Thickness BorderThickness { get; set; }
         public List<FieldData> Fields { get; set; }
         public DataValues Data { get; set; }
     }

@@ -43,11 +43,8 @@ namespace Forms
             InitializeFormDataAbcd();
 
             GenerateGrid(formData.Field, mainGrid);
-            scrollViewer.Children.Add(mainGrid);
+            ContentGrid.Children.Add(mainGrid);
         }
-
-
-
 
 
         /// <summary>
@@ -80,6 +77,8 @@ namespace Forms
                         subgrid.VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement);
                         subgrid.HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement);
                         if (!string.IsNullOrEmpty(item.BackgroundHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
+                        if (!string.IsNullOrEmpty(item.BorderHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
+
 
                         if (item.ColumnIndex > currentGrid.ColumnDefinitions.Count - 1)
                         {
@@ -93,6 +92,7 @@ namespace Forms
                         }
                         if (item.ColumnSpan > 0) Grid.SetColumnSpan(subgrid, item.ColumnSpan);
                         if (item.RowSpan > 0) Grid.SetRowSpan(subgrid, item.RowSpan);
+
 
                         currentGrid.Children.Add(subgrid);
 
@@ -246,6 +246,7 @@ namespace Forms
                         HorizontalSpaceType = EnumSpaceType.Star,
                         VerticalSpaceUsage = 1,
                         VerticalSpaceType = EnumSpaceType.Auto,
+                        RowIndex=0,
                         BackgroundHexColor ="#8F969C",
                         Fields = new List<FieldData>()
                         {
@@ -272,7 +273,868 @@ namespace Forms
                                 }
                             }
                         }
+                    },
+                    new FieldData()
+                    {
+                        Name="Tableau",
+                        TypeComponent = EnumTypeComponent.Grid,
+                        HorizontalSpaceUsage = 1,
+                        HorizontalSpaceType = EnumSpaceType.Star,
+                        VerticalSpaceUsage = 1,
+                        VerticalSpaceType = EnumSpaceType.Star,
+                        RowIndex=1,
+                        BackgroundHexColor ="#FFFFFF",
+                        Fields = new List<FieldData>()
+                        {
+                            new FieldData()
+                            {
+                                Name="Entete",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=0,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="EnteteCol1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF"
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="EnteteCol2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name= "LabelSigne",
+                                                TypeComponent = EnumTypeComponent.Label,
+                                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                VerticalSpaceUsage=1,
+                                                VerticalSpaceType= EnumSpaceType.Auto,
+                                                HorizontalSpaceUsage=1,
+                                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                                BackgroundHexColor="#00000000",
+                                                ForeGroundHexColor="#000000",
+                                                FontWeight = EnumFontWeight.SemiBold,
+                                                FontSize = EnumFontSize._10,
+                                                DataValueType = EnumDataValuesType.StringValue,
+                                                Data= new DataValues()
+                                                {
+                                                    StringValue="SIGNES"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="EnteteCol3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name= "LabelGestes",
+                                                TypeComponent = EnumTypeComponent.Label,
+                                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                VerticalSpaceUsage=1,
+                                                VerticalSpaceType= EnumSpaceType.Auto,
+                                                HorizontalSpaceUsage=1,
+                                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                                BackgroundHexColor="#00000000",
+                                                ForeGroundHexColor="#000000",
+                                                FontWeight = EnumFontWeight.SemiBold,
+                                                FontSize = EnumFontSize._10,
+                                                DataValueType = EnumDataValuesType.StringValue,
+                                                Data= new DataValues()
+                                                {
+                                                    StringValue="GESTES"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_X",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=1,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_X_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_X",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelX",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="X"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_X",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#FFFFFF"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_X_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_X_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_A",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=2,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_A_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_A",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelA",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="A"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_A",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_A_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_A_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_B",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=3,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_B_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_B",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelB",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="B"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_B",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_B_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_B_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_C",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=4,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_C_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_C",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelC",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="C"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_C",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_C_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_C_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_D",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=5,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_D_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_D",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelD",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="D"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_D",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_D_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_D_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_E",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=6,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_E_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_E",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelE",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue="E"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_E",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_E_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_E_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            },
+                            new FieldData()
+                            {
+                                Name="Row_Criticite",
+                                TypeComponent = EnumTypeComponent.Grid,
+                                HorizontalSpaceUsage = 1,
+                                HorizontalSpaceType = EnumSpaceType.Star,
+                                VerticalSpaceUsage = 1,
+                                VerticalSpaceType = EnumSpaceType.Auto,
+                                RowIndex=7,
+                                BackgroundHexColor ="#FFFFFF",
+                                Fields= new List<FieldData>()
+                                {
+                                    new FieldData()
+                                    {
+                                        Name="Row_Criticite_Col1",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=0,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+                                            new FieldData()
+                                            {
+                                                Name="Col_Criticite",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=0,
+                                                BackgroundHexColor ="#8F969C",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "LabelE",
+                                                        TypeComponent = EnumTypeComponent.Label,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        BackgroundHexColor="#00000000",
+                                                        ForeGroundHexColor="#FFFFFF",
+                                                        FontWeight = EnumFontWeight.SemiBold,
+                                                        FontSize = EnumFontSize._12,
+                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        Data= new DataValues()
+                                                        {
+                                                            StringValue=""
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Col_Criticite",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 3,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                ColumnIndex=1,
+                                                BackgroundHexColor ="#548131"
+                                            },
+
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_Criticite_Col2",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=1,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    },
+                                    new FieldData()
+                                    {
+                                        Name="Row_Criticite_Col3",
+                                        TypeComponent = EnumTypeComponent.Grid,
+                                        HorizontalSpaceUsage = 1,
+                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                        VerticalSpaceUsage = 1,
+                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        ColumnIndex=2,
+                                        BackgroundHexColor ="#FFFFFF",
+                                        Fields = new List<FieldData>()
+                                        {
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
+
                 }
 
             }
@@ -411,10 +1273,15 @@ namespace Forms
 
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
-
+                HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
+                VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
                 Margin = item.Margin,
-                Width = item.HorizontalSpaceUsage,
-                Height = item.VerticalSpaceUsage
+                Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
+                Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
+                FontWeight = GetFontWeight(item.FontWeight),
+                FontSize = GenerateFontSize(item.FontSize),
+                Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
+                Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
             };
         }
 
