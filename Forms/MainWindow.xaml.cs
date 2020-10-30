@@ -432,10 +432,15 @@ namespace Forms
 
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
-
+                HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
+                VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
                 Margin = item.Margin,
-                Width = item.HorizontalSpaceUsage,
-                Height = item.VerticalSpaceUsage
+                Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
+                Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
+                FontWeight = GetFontWeight(item.FontWeight),
+                FontSize = GenerateFontSize(item.FontSize),
+                Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
+                Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
             };
         }
 
@@ -453,10 +458,15 @@ namespace Forms
 
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
-
+                HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
+                VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
                 Margin = item.Margin,
-                Width = item.HorizontalSpaceUsage,
-                Height = item.VerticalSpaceUsage
+                Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
+                Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
+                FontWeight = GetFontWeight(item.FontWeight),
+                FontSize = GenerateFontSize(item.FontSize),
+                Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
+                Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
             };
         }
 
