@@ -2,6 +2,7 @@
 using Forms.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -186,7 +187,7 @@ namespace Forms
                                                HorizontalSpaceType = EnumSpaceType.Pixel,
                                                HorizontalAlignement= EnumHorizontalAlignement.Left,
                                                VerticalAlignement = EnumVerticalAlignement.Bottom,
-                                               DataValueType = EnumDataValuesType.StringValue,
+                                               DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                Data = new DataValues()
                                                {
                                                    StringValue = "test d'un contenu"
@@ -266,7 +267,7 @@ namespace Forms
                                 ForeGroundHexColor="#FFFFFF",
                                 FontWeight = EnumFontWeight.SemiBold,
                                 FontSize = EnumFontSize._12,
-                                DataValueType = EnumDataValuesType.StringValue,
+                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                 Data= new DataValues()
                                 {
                                     StringValue="BILAN D'URGENCE VITALE"
@@ -337,7 +338,7 @@ namespace Forms
                                                 ForeGroundHexColor="#000000",
                                                 FontWeight = EnumFontWeight.SemiBold,
                                                 FontSize = EnumFontSize._10,
-                                                DataValueType = EnumDataValuesType.StringValue,
+                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                 Data= new DataValues()
                                                 {
                                                     StringValue="SIGNES"
@@ -373,7 +374,7 @@ namespace Forms
                                                 ForeGroundHexColor="#000000",
                                                 FontWeight = EnumFontWeight.SemiBold,
                                                 FontSize = EnumFontSize._10,
-                                                DataValueType = EnumDataValuesType.StringValue,
+                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                 Data= new DataValues()
                                                 {
                                                     StringValue="GESTES"
@@ -435,7 +436,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="X"
@@ -542,7 +543,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="A"
@@ -552,14 +553,118 @@ namespace Forms
                                             },
                                             new FieldData()
                                             {
-                                                Name="Col_A",
+                                                Name="Col_A_Check",
                                                 TypeComponent = EnumTypeComponent.Grid,
                                                 HorizontalSpaceUsage = 3,
                                                 HorizontalSpaceType = EnumSpaceType.Star,
                                                 VerticalSpaceUsage = 1,
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=1,
-                                                BackgroundHexColor ="#548131"
+                                                BackgroundHexColor ="#548131",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name="Row_1",
+                                                        TypeComponent = EnumTypeComponent.Grid,
+                                                        HorizontalSpaceUsage = 1,
+                                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                                        VerticalSpaceUsage = 1,
+                                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                                        RowIndex=0,
+                                                        Fields = new List<FieldData>()
+                                                        {
+                                                            new FieldData()
+                                                            {
+                                                                Name= "LabelParle",
+                                                                TypeComponent = EnumTypeComponent.Label,
+                                                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                                VerticalSpaceUsage=1,
+                                                                VerticalSpaceType= EnumSpaceType.Auto,
+                                                                HorizontalSpaceUsage=1,
+                                                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                                                BackgroundHexColor=Brushes.Transparent.ToString(),
+                                                                ForeGroundHexColor="#000000",
+                                                                FontWeight = EnumFontWeight.SemiBold,
+                                                                FontSize = EnumFontSize._10,
+                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                                Data= new DataValues()
+                                                                {
+                                                                    StringValue="Parle"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    new FieldData()
+                                                    {
+                                                        Name="Row_2",
+                                                        TypeComponent = EnumTypeComponent.Grid,
+                                                        HorizontalSpaceUsage = 1,
+                                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                                        VerticalSpaceUsage = 1,
+                                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                                        RowIndex=1,
+                                                        Fields = new List<FieldData>()
+                                                        {
+                                                            new FieldData()
+                                                            {
+                                                                Name= "LabelParle",
+                                                                TypeComponent = EnumTypeComponent.Checkbox,
+                                                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                                VerticalSpaceUsage=1,
+                                                                VerticalSpaceType= EnumSpaceType.Auto,
+                                                                HorizontalSpaceUsage=1,
+                                                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                                Data= new DataValues()
+                                                                {
+                                                                    BoolValue=false
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    new FieldData()
+                                                    {
+                                                        Name="Row_3",
+                                                        TypeComponent = EnumTypeComponent.Grid,
+                                                        HorizontalSpaceUsage = 1,
+                                                        HorizontalSpaceType = EnumSpaceType.Star,
+                                                        VerticalSpaceUsage = 1,
+                                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                                        RowIndex=2,
+                                                        Fields = new List<FieldData>()
+                                                        {
+                                                            new FieldData()
+                                                            {
+                                                                Name= "LabelParle",
+                                                                TypeComponent = EnumTypeComponent.Label,
+                                                                HorizontalAlignement= EnumHorizontalAlignement.Center,
+                                                                VerticalAlignement = EnumVerticalAlignement.Center,
+                                                                ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                                ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                                VerticalSpaceUsage=1,
+                                                                VerticalSpaceType= EnumSpaceType.Auto,
+                                                                HorizontalSpaceUsage=1,
+                                                                HorizontalSpaceType = EnumSpaceType.Auto,
+                                                                BackgroundHexColor=Brushes.Transparent.ToString(),
+                                                                ForeGroundHexColor="#000000",
+                                                                FontWeight = EnumFontWeight.SemiBold,
+                                                                FontSize = EnumFontSize._10,
+                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                                Data= new DataValues()
+                                                                {
+                                                                    StringValue="VAS libres"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             },
 
 
@@ -572,12 +677,80 @@ namespace Forms
                                         HorizontalSpaceUsage = 1,
                                         HorizontalSpaceType = EnumSpaceType.Star,
                                         VerticalSpaceUsage = 1,
-                                        VerticalSpaceType = EnumSpaceType.Auto,
+                                        VerticalSpaceType = EnumSpaceType.Star,
+                                         VerticalAlignement= EnumVerticalAlignement.Center,
                                         ColumnIndex=1,
-                                        BackgroundHexColor ="#FFFFFF",
+                                        BackgroundHexColor = "#FFFFFF",
                                         Fields = new List<FieldData>()
                                         {
-
+                                            new FieldData()
+                                            {
+                                                Name="Row_A_Col2",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                RowIndex=0,
+                                                BackgroundHexColor ="#FFFFFF",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "checkboxObstructionVasPartielle",
+                                                        TypeComponent = EnumTypeComponent.RadioButton,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Left,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                        Data= new DataValues()
+                                                        {
+                                                            BoolValue=true,
+                                                            StringValue = "Obstruction des VAS partielle",
+                                                            GroupValue="ObstructionVAS"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new FieldData()
+                                            {
+                                                Name="Row_A_Col2",
+                                                TypeComponent = EnumTypeComponent.Grid,
+                                                HorizontalSpaceUsage = 1,
+                                                HorizontalSpaceType = EnumSpaceType.Star,
+                                                VerticalSpaceUsage = 1,
+                                                VerticalSpaceType = EnumSpaceType.Auto,
+                                                RowIndex=1,
+                                                BackgroundHexColor ="#FFFFFF",
+                                                Fields = new List<FieldData>()
+                                                {
+                                                    new FieldData()
+                                                    {
+                                                        Name= "checkboxObstructionVasGrave",
+                                                        TypeComponent = EnumTypeComponent.RadioButton,
+                                                        HorizontalAlignement= EnumHorizontalAlignement.Left,
+                                                        VerticalAlignement = EnumVerticalAlignement.Center,
+                                                        ContentHorizontalAlignement = EnumContentHorizontalAlignement.Center,
+                                                        ContentVerticalAlignement= EnumContentVerticalAlignement.Center,
+                                                        VerticalSpaceUsage=1,
+                                                        VerticalSpaceType= EnumSpaceType.Auto,
+                                                        HorizontalSpaceUsage=1,
+                                                        HorizontalSpaceType = EnumSpaceType.Auto,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                        Data= new DataValues()
+                                                        {
+                                                            BoolValue=false,
+                                                            StringValue = "Obstruction des VAS grave",
+                                                            GroupValue="ObstructionVAS"
+                                                        }
+                                                    }
+                                                }
+                                            },
                                         }
                                     },
                                     new FieldData()
@@ -649,7 +822,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="B"
@@ -756,7 +929,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="C"
@@ -863,7 +1036,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="D"
@@ -970,7 +1143,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="E"
@@ -1077,7 +1250,7 @@ namespace Forms
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = EnumDataValuesType.StringValue,
+                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue=""
@@ -1242,9 +1415,9 @@ namespace Forms
             };
         }
 
-        private object GetDataFromDataValuestype(FieldData fieldData)
+        private object GetDataFromDataValuestype(FieldData fieldData, EnumDataValuesType type)
         {
-            return fieldData.DataValueType switch
+            return type switch
             {
                 EnumDataValuesType.BoolValue => fieldData.Data.BoolValue,
                 EnumDataValuesType.ByteValue => fieldData.Data.ByteValue,
@@ -1252,6 +1425,7 @@ namespace Forms
                 EnumDataValuesType.FloatValue => fieldData.Data.FloatValue,
                 EnumDataValuesType.IntValue => fieldData.Data.IntValue,
                 EnumDataValuesType.StringValue => fieldData.Data.StringValue,
+                EnumDataValuesType.GroupValue => fieldData.Data.GroupValue,
                 _ => null,
             };
         }
@@ -1264,26 +1438,22 @@ namespace Forms
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private TextBox GenerateTextBox(FieldData item)
+        private TextBox GenerateTextBox(FieldData item) => new TextBox()
         {
-            return new TextBox()
-            {
-                Name = item.Name,
-                Text = (string)GetDataFromDataValuestype(item),
-
-                HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
-                VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
-                HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
-                VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
-                Margin = item.Margin,
-                Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
-                Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
-                FontWeight = GetFontWeight(item.FontWeight),
-                FontSize = GenerateFontSize(item.FontSize),
-                Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
-                Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
-            };
-        }
+            Name = item.Name,
+            Text = (string)GetDataFromDataValuestype(item, EnumDataValuesType.StringValue),
+            HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
+            VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
+            HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
+            VerticalContentAlignment = GetVerticalContentAlignment(item.ContentVerticalAlignement),
+            Margin = item.Margin,
+            Width = item.HorizontalSpaceType == EnumSpaceType.Auto ? double.NaN : item.HorizontalSpaceUsage,
+            Height = item.VerticalSpaceType == EnumSpaceType.Auto ? double.NaN : item.VerticalSpaceUsage,
+            FontWeight = GetFontWeight(item.FontWeight),
+            FontSize = GenerateFontSize(item.FontSize),
+            Foreground = string.IsNullOrEmpty(item.ForeGroundHexColor) ? Foreground : (Brush)new BrushConverter().ConvertFromString(item.ForeGroundHexColor),
+            Background = string.IsNullOrEmpty(item.BackgroundHexColor) ? Background : (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor)
+        };
 
         /// <summary>
         /// Genere une CheckBox depuis un FieldData
@@ -1295,8 +1465,8 @@ namespace Forms
             return new CheckBox()
             {
                 Name = item.Name,
-                Content = (string)GetDataFromDataValuestype(item),
-
+                Content = (string)GetDataFromDataValuestype(item, EnumDataValuesType.StringValue),
+                IsChecked = (bool)GetDataFromDataValuestype(item, EnumDataValuesType.BoolValue),
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
                 HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
@@ -1321,8 +1491,9 @@ namespace Forms
             return new RadioButton()
             {
                 Name = item.Name,
-                Content = (string)GetDataFromDataValuestype(item),
-
+                Content = (string)GetDataFromDataValuestype(item, EnumDataValuesType.StringValue),
+                IsChecked = (bool)GetDataFromDataValuestype(item, EnumDataValuesType.BoolValue),
+                GroupName = (string)GetDataFromDataValuestype(item, EnumDataValuesType.GroupValue),
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
                 HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),
@@ -1347,8 +1518,7 @@ namespace Forms
             return new Label()
             {
                 Name = item.Name,
-                Content = (string)GetDataFromDataValuestype(item),
-
+                Content = (string)GetDataFromDataValuestype(item, EnumDataValuesType.StringValue),
                 HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement),
                 VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement),
                 HorizontalContentAlignment = GetHorizontalContentAlignment(item.ContentHorizontalAlignement),

@@ -12,5 +12,6 @@ namespace Forms.Models
         public float FloatValue { get; set; }
         public int IntValue { get; set; }
         public string StringValue { get; set; }
+        public string GroupValue { get; set; }
     }
 }

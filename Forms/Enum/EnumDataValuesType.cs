@@ -12,5 +12,6 @@ namespace Forms.Enum
         FloatValue,
         IntValue,
         StringValue,
+        GroupValue
     }
 }

@@ -27,7 +27,7 @@ namespace Forms.Models
         public EnumTextVerticalAlignement TextVerticalAlignement { get; set; }
         public EnumSpaceType HorizontalSpaceType { get; set; }
         public EnumSpaceType VerticalSpaceType { get; set; }
-        public EnumDataValuesType DataValueType { get; set; }
+        public List<EnumDataValuesType> DataValueType { get; set; }
         public EnumFontWeight FontWeight { get; set; }
         public EnumFontSize FontSize { get; set; }
         public int RowIndex { get; set; }
