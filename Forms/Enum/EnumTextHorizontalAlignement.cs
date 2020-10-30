@@ -4,12 +4,11 @@ using System.Text;
 
 namespace Forms.Enum
 {
-    public enum EnumVerticalAlignement
+    public enum EnumTextHorizontalAlignement
     {
         NonRenseigne = 0,
-        Bottom = 1,
+        Left = 1,
         Center = 2,
-        Top = 3,
-        Stretch = 4
+        Right = 3
     }
 }
