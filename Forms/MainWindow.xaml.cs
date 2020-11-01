@@ -2,16 +2,15 @@
 using Forms.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Forms
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -43,6 +42,8 @@ namespace Forms
             //InitializeFormDataTest();
             InitializeFormDataAbcd();
 
+            var jsonString = JsonSerializer.Serialize(formData);
+
             GenerateGrid(formData.Field, mainGrid);
             ContentGrid.Children.Add(mainGrid);
         }
@@ -58,7 +59,17 @@ namespace Forms
 
             foreach (var item in fieldData.Fields)
             {
+                var needBorder = (item.BorderThickness != new Thickness() && !string.IsNullOrEmpty(item.BorderHexColor));
+                var border = new Border();
+
                 Grid subgrid = new Grid();
+                if (needBorder)
+                {
+                    border.Child = subgrid;
+                    border.BorderThickness = item.BorderThickness;
+                    border.BorderBrush = (Brush)new BrushConverter().ConvertFromString(item.BorderHexColor);
+                }
+
                 Control control = new Control();
 
                 switch (item.TypeComponent)
@@ -77,6 +88,7 @@ namespace Forms
 
                         subgrid.VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement);
                         subgrid.HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement);
+
                         if (!string.IsNullOrEmpty(item.BackgroundHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
                         if (!string.IsNullOrEmpty(item.BorderHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
 
@@ -84,18 +96,34 @@ namespace Forms
                         if (item.ColumnIndex > currentGrid.ColumnDefinitions.Count - 1)
                         {
                             currentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(item.HorizontalSpaceUsage, GetGridUnitType(item.HorizontalSpaceType)) });
-                            Grid.SetColumn(subgrid, item.ColumnIndex);
+
+                            if (needBorder) Grid.SetRow(border, item.RowIndex);
+                            else Grid.SetColumn(subgrid, item.ColumnIndex);
                         }
                         if (item.RowIndex > currentGrid.RowDefinitions.Count - 1)
                         {
                             currentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(item.VerticalSpaceUsage, GetGridUnitType(item.VerticalSpaceType)) });
-                            Grid.SetRow(subgrid, item.RowIndex);
+
+                            if (needBorder) Grid.SetRow(border, item.RowIndex);
+                            else Grid.SetRow(subgrid, item.RowIndex);
                         }
-                        if (item.ColumnSpan > 0) Grid.SetColumnSpan(subgrid, item.ColumnSpan);
-                        if (item.RowSpan > 0) Grid.SetRowSpan(subgrid, item.RowSpan);
 
 
-                        currentGrid.Children.Add(subgrid);
+                        if (needBorder)
+                        {
+                            currentGrid.Children.Add(border);
+                            if (item.ColumnSpan > 0) Grid.SetColumnSpan(border, item.ColumnSpan);
+                            if (item.RowSpan > 0) Grid.SetRowSpan(border, item.RowSpan);
+
+                        }
+                        else
+                        {
+                            currentGrid.Children.Add(subgrid);
+                            if (item.ColumnSpan > 0) Grid.SetColumnSpan(subgrid, item.ColumnSpan);
+                            if (item.RowSpan > 0) Grid.SetRowSpan(subgrid, item.RowSpan);
+
+                        }
+
 
                         break;
                     case EnumTypeComponent.Checkbox:
@@ -249,6 +277,8 @@ namespace Forms
                         VerticalSpaceType = EnumSpaceType.Auto,
                         RowIndex=0,
                         BackgroundHexColor ="#8F969C",
+                        BorderHexColor = "#000000",
+                        BorderThickness = new Thickness(1),
                         Fields = new List<FieldData>()
                         {
                             new FieldData()
@@ -285,6 +315,8 @@ namespace Forms
                         VerticalSpaceType = EnumSpaceType.Star,
                         RowIndex=1,
                         BackgroundHexColor ="#FFFFFF",
+                        BorderHexColor = "#000000",
+                        BorderThickness = new Thickness(1),
                         Fields = new List<FieldData>()
                         {
                             new FieldData()
