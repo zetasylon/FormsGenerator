@@ -1381,7 +1381,7 @@ namespace Forms
                 EnumHorizontalAlignement.Center => HorizontalAlignment.Center,
                 EnumHorizontalAlignement.Right => HorizontalAlignment.Right,
                 EnumHorizontalAlignement.Stretch => HorizontalAlignment.Stretch,
-                _ => HorizontalAlignment.Left,
+                _ => HorizontalAlignment.Stretch,
             };
         }
 
@@ -1394,7 +1394,7 @@ namespace Forms
                 EnumContentHorizontalAlignement.Center => HorizontalAlignment.Center,
                 EnumContentHorizontalAlignement.Right => HorizontalAlignment.Right,
                 EnumContentHorizontalAlignement.Stretch => HorizontalAlignment.Stretch,
-                _ => HorizontalAlignment.Left,
+                _ => HorizontalAlignment.Stretch,
             };
         }
         private GridUnitType GetGridUnitType(EnumSpaceType spaceType)
@@ -1404,6 +1404,7 @@ namespace Forms
                 EnumSpaceType.Pixel => GridUnitType.Pixel,
                 EnumSpaceType.Star => GridUnitType.Star,
                 EnumSpaceType.Auto => GridUnitType.Auto,
+                EnumSpaceType.NonRenseigne => GridUnitType.Pixel,
                 _ => GridUnitType.Pixel,
             };
         }
@@ -1428,6 +1429,7 @@ namespace Forms
                 EnumFontWeight.UltraBlack => FontWeights.UltraBlack,
                 EnumFontWeight.UltraBold => FontWeights.UltraBold,
                 EnumFontWeight.UltraLight => FontWeights.UltraLight,
+                EnumFontWeight.NonRenseigne => FontWeights.Normal,
                 _ => FontWeights.Normal,
             };
         }
@@ -1443,7 +1445,8 @@ namespace Forms
                 EnumFontSize._16 => 16,
                 EnumFontSize._18 => 18,
                 EnumFontSize._20 => 20,
-                _ => 12,
+                EnumFontSize.NonRenseigne => 10,
+                _ => 10,
             };
         }
 

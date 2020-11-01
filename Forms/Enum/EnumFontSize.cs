@@ -6,6 +6,7 @@ namespace Forms.Enum
 {
     public enum EnumFontSize
     {
+        NonRenseigne = 0,
         _8,
         _10,
         _12,

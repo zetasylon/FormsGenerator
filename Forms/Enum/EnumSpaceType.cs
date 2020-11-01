@@ -6,6 +6,7 @@ namespace Forms.Enum
 {
     public enum EnumSpaceType
     {
+        NonRenseigne,
         Pixel,
         Star,
         Auto

@@ -6,6 +6,7 @@ namespace Forms.Enum
 {
     public enum EnumFontWeight
     {
+        NonRenseigne,
         Black,
         Bold,
         DemiBold,
