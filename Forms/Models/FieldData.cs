@@ -1,11 +1,14 @@
 ﻿using Forms.Enum;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 
 namespace Forms.Models
 {
-    public class FieldData
+    [AddINotifyPropertyChangedInterface]
+    public class FieldData 
     {
         public FieldData()
         {

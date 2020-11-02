@@ -1,9 +1,12 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Forms.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class DataValues
     {
         public bool BoolValue { get; set; }
