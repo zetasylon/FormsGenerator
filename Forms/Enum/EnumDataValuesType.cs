@@ -6,7 +6,7 @@ namespace Forms.Enum
 {
     public enum EnumDataValuesType
     {
-        NnonRenseigne,
+        nonRenseigne,
         BoolValue,
         ByteValue,
         DateValue,

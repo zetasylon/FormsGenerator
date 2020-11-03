@@ -2,6 +2,7 @@
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 using System.Windows;
@@ -35,7 +36,7 @@ namespace Forms.Models
         public EnumTextVerticalAlignement TextVerticalAlignement { get; set; }
         public EnumSpaceType HorizontalSpaceType { get; set; }
         public EnumSpaceType VerticalSpaceType { get; set; }
-        public List<EnumDataValuesType> DataValueType { get; set; }
+        public ObservableCollection<EnumDataValuesType> DataValueType { get; set; }
         public EnumFontWeight FontWeight { get; set; }
         public EnumFontSize FontSize { get; set; }
 

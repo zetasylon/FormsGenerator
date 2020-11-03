@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Models="clr-namespace:Forms.Models"
+        xmlns:UserControls="clr-namespace:Forms.UserControls"
         xmlns:local="clr-namespace:Forms"
         mc:Ignorable="d"
         Title="FormsGenerator" Height="1080" Width="1920" WindowState="Maximized" Loaded="Window_Loaded"
@@ -15,19 +16,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" x:Name="gridJson" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="0.25*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">  
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="recherche :" VerticalAlignment="Center"/>
-                <TextBox x:Name="SearchtextBox" Grid.Column="1" Margin="10" TextChanged="SearchtextBox_TextChanged" />
-            </Grid>
-          
-            <TextBox Width="auto" Grid.Row="1" x:Name="TextBoxJson" TextWrapping="Wrap" Height="{Binding ElementName=gridJson, Path=ActualHeight}" Text="{Binding ElementName=CurrentWindow,Path=FormulaireJson,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+            <UserControls:UserControlEditFormData Grid.Row="1" DataContext="{Binding ElementName=CurrentWindow,Path=Formulaire.Field}"/>
         </Grid>
         <Grid Grid.Column="1" Background="#2980b9">
             <Grid.RowDefinitions>

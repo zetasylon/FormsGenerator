@@ -3,6 +3,7 @@ using Forms.Models;
 using Forms.Tools;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text.Json;
@@ -356,97 +357,6 @@ namespace Forms.Tools
         /// <summary>
         /// Initialisation de l'objet formData avec des données de test
         /// </summary>
-        private FormData InitializeFormDataTest() => new FormData()
-        {
-            Name = "Formulaire_Test",
-            Field = new FieldData()
-            {
-                Name = "MainGrid",
-                TypeComponent = EnumTypeComponent.Grid,
-                HorizontalSpaceUsage = 1,
-                HorizontalSpaceType = EnumSpaceType.Star,
-                VerticalSpaceUsage = 1,
-                VerticalSpaceType = EnumSpaceType.Star,
-                BackgroundHexColor = "#000000",
-                Fields = new List<FieldData>()
-                    {
-                        new FieldData()
-                        {
-                               Name = "Grid_0",
-                               TypeComponent = EnumTypeComponent.Grid,
-                               HorizontalSpaceUsage = 1,
-                               HorizontalSpaceType = EnumSpaceType.Star,
-                               VerticalSpaceUsage = 1,
-                               VerticalSpaceType = EnumSpaceType.Star,
-                               BackgroundHexColor ="#FF0000",
-                               ColumnIndex=1,
-                               RowIndex=1,
-                               Fields = new List<FieldData>()
-                               {
-                                   new FieldData()
-                                   {
-                                       Name = "Grid_0C0",
-                                       TypeComponent = EnumTypeComponent.Grid,
-                                       HorizontalSpaceUsage=1,
-                                       HorizontalSpaceType = EnumSpaceType.Star,
-                                       ColumnSpan=2,
-                                       VerticalSpaceUsage = 1,
-                                       VerticalSpaceType = EnumSpaceType.Star,
-                                       RowSpan=1,
-                                       BackgroundHexColor ="#0000FF",
-                                       ColumnIndex=0,
-                                       RowIndex=0,
-                                       Fields = new List<FieldData>()
-                                       {
-                                           new FieldData()
-                                           {
-                                               Name="Grid_0C0_TextBox",
-                                               TypeComponent = EnumTypeComponent.Textbox,
-                                               Margin = new Thickness(10),
-                                               VerticalSpaceUsage=80,
-                                               VerticalSpaceType= EnumSpaceType.Pixel,
-                                               HorizontalSpaceUsage=200,
-                                               HorizontalSpaceType = EnumSpaceType.Pixel,
-                                               HorizontalAlignement= EnumHorizontalAlignement.Left,
-                                               VerticalAlignement = EnumVerticalAlignement.Bottom,
-                                               DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
-                                               Data = new DataValues()
-                                               {
-                                                   StringValue = "test d'un contenu"
-                                               }
-
-                                           },
-
-                                       }
-                                   },
-                                   new FieldData()
-                                   {
-                                       Name= "Grid_0C1",
-                                       TypeComponent= EnumTypeComponent.Grid,
-                                       HorizontalSpaceUsage = 2,
-                                       HorizontalSpaceType = EnumSpaceType.Star,
-                                       VerticalSpaceUsage = 2,
-                                       VerticalSpaceType = EnumSpaceType.Star,
-                                       BackgroundHexColor ="#A1F2EC",
-                                       ColumnIndex=1,
-                                       RowIndex=1,
-                                       Fields = new List<FieldData>()
-                                       {
-                                           new FieldData()
-                                           {
-                                               Name = "Grid_0C1_Radiobutton"
-                                           }
-                                       }
-                                   }
-                               }
-                            }
-                    }
-            }
-        };
-
-        /// <summary>
-        /// Initialisation de l'objet formData avec des données de test
-        /// </summary>
         private FormData InitializeFormDataAbcd() => new FormData()
         {
             Name = "Formulaire_ABCD",
@@ -458,7 +368,13 @@ namespace Forms.Tools
                 HorizontalSpaceType = EnumSpaceType.Star,
                 VerticalSpaceUsage = 1,
                 VerticalSpaceType = EnumSpaceType.Star,
-                BackgroundHexColor = "#FFFFFF",
+                BackgroundHexColor = "#000000",
+                DataValueType = new ObservableCollection<EnumDataValuesType>() { EnumDataValuesType.DateValue },
+                Data = new DataValues()
+                {
+                    DateValue = DateTime.Now.AddDays(-4)
+
+                },
                 Fields = new List<FieldData>()
                 {
                     new FieldData()
@@ -491,7 +407,7 @@ namespace Forms.Tools
                                 ForeGroundHexColor="#FFFFFF",
                                 FontWeight = EnumFontWeight.SemiBold,
                                 FontSize = EnumFontSize._12,
-                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                 Data= new DataValues()
                                 {
                                     StringValue="BILAN D'URGENCE VITALE"
@@ -564,7 +480,7 @@ namespace Forms.Tools
                                                 ForeGroundHexColor="#000000",
                                                 FontWeight = EnumFontWeight.SemiBold,
                                                 FontSize = EnumFontSize._10,
-                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                 Data= new DataValues()
                                                 {
                                                     StringValue="SIGNES"
@@ -600,7 +516,7 @@ namespace Forms.Tools
                                                 ForeGroundHexColor="#000000",
                                                 FontWeight = EnumFontWeight.SemiBold,
                                                 FontSize = EnumFontSize._10,
-                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                 Data= new DataValues()
                                                 {
                                                     StringValue="GESTES"
@@ -662,7 +578,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="X"
@@ -769,7 +685,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="A"
@@ -816,7 +732,7 @@ namespace Forms.Tools
                                                                 ForeGroundHexColor="#000000",
                                                                 FontWeight = EnumFontWeight.SemiBold,
                                                                 FontSize = EnumFontSize._10,
-                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                                 Data= new DataValues()
                                                                 {
                                                                     StringValue="Parle"
@@ -847,7 +763,7 @@ namespace Forms.Tools
                                                                 VerticalSpaceType= EnumSpaceType.Auto,
                                                                 HorizontalSpaceUsage=1,
                                                                 HorizontalSpaceType = EnumSpaceType.Auto,
-                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
                                                                 Data= new DataValues()
                                                                 {
                                                                     BoolValue=false
@@ -882,7 +798,7 @@ namespace Forms.Tools
                                                                 ForeGroundHexColor="#000000",
                                                                 FontWeight = EnumFontWeight.SemiBold,
                                                                 FontSize = EnumFontSize._10,
-                                                                DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                                DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                                 Data= new DataValues()
                                                                 {
                                                                     StringValue="VAS libres"
@@ -933,7 +849,7 @@ namespace Forms.Tools
                                                         VerticalSpaceType= EnumSpaceType.Auto,
                                                         HorizontalSpaceUsage=1,
                                                         HorizontalSpaceType = EnumSpaceType.Auto,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
                                                         Data= new DataValues()
                                                         {
                                                             BoolValue=true,
@@ -967,7 +883,7 @@ namespace Forms.Tools
                                                         VerticalSpaceType= EnumSpaceType.Auto,
                                                         HorizontalSpaceUsage=1,
                                                         HorizontalSpaceType = EnumSpaceType.Auto,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.BoolValue },
                                                         Data= new DataValues()
                                                         {
                                                             BoolValue=false,
@@ -1048,7 +964,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="B"
@@ -1155,7 +1071,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="C"
@@ -1262,7 +1178,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="D"
@@ -1369,7 +1285,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue="E"
@@ -1476,7 +1392,7 @@ namespace Forms.Tools
                                                         ForeGroundHexColor="#FFFFFF",
                                                         FontWeight = EnumFontWeight.SemiBold,
                                                         FontSize = EnumFontSize._12,
-                                                        DataValueType = new List<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
+                                                        DataValueType = new ObservableCollection<EnumDataValuesType>(){ EnumDataValuesType.StringValue },
                                                         Data= new DataValues()
                                                         {
                                                             StringValue=""

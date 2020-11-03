@@ -28,7 +28,7 @@ namespace Forms
         public bool LiveReload { get; set; } = false;
         public FormData Formulaire { get; set; }
         public string FormulaireJson { get; set; } = string.Empty;
-        JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate};
+        JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate };
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,8 +40,9 @@ namespace Forms
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ClearGrid();
-            Formulaire = JsonConvert.DeserializeObject<FormData>(FormulaireJson, jsonSettings);
+            //Formulaire = JsonConvert.DeserializeObject<FormData>(FormulaireJson, jsonSettings);
             generator.GenerateGrid(Formulaire.Field, GridRendu);
+            
         }
 
         private void ClearGrid()
@@ -49,18 +50,6 @@ namespace Forms
             GridRendu.Children.Clear();
             GridRendu.ColumnDefinitions.Clear();
             GridRendu.RowDefinitions.Clear();
-        }
-
-        private void SearchtextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int pos = TextBoxJson.Text.ToLower().IndexOf(SearchtextBox.Text.ToLower());
-            if (pos != -1)
-            {
-                TextBoxJson.SelectionStart = pos;
-                TextBoxJson.SelectionLength = SearchtextBox.Text.Length;
-                TextBoxJson.Select(TextBoxJson.SelectionStart, TextBoxJson.SelectionLength);
-                TextBoxJson.ScrollToLine(TextBoxJson.GetLineIndexFromCharacterIndex(TextBoxJson.SelectionStart));
-            }
         }
     }
 }

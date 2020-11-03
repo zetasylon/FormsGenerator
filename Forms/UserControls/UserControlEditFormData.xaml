@@ -1,0 +1,436 @@
+﻿<UserControl x:Class="Forms.UserControls.UserControlEditFormData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Forms.UserControls"
+             xmlns:Enum ="clr-namespace:Forms.Enum"
+             xmlns:Converter ="clr-namespace:Forms.Converters"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="1900" d:DesignWidth="450" DataContextChanged="UserControl_DataContextChanged"
+             x:Name="CurrentUserControl">
+    <UserControl.Resources>
+        <Converter:StringToColorConverter x:Key="StringToColorConverter"/>
+        <Converter:ByteArrayToStringConverter x:Key="ByteArrayToStringConverter"/>
+        <Converter:ObjectToBoolConverter x:Key="ObjectToBoolConverter"/>
+        <ObjectDataProvider x:Key="dataFromEnumTypeComponent" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumTypeComponent"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumHorizontalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumHorizontalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumVerticalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumVerticalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumContentHorizontalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumContentHorizontalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumContentVerticalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumContentVerticalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumTextHorizontalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumTextHorizontalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumTextVerticalAlignement" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumTextVerticalAlignement"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumSpaceType" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumSpaceType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumDataValuesType" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumDataValuesType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumFontWeight" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumFontWeight"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="dataFromEnumFontSize" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:EnumFontSize"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="#0099BC" >
+            <Grid  Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Global" FontWeight="Bold"/>
+                <Grid Grid.Row="1" x:Name="GridName" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Name" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="2" x:Name="GridId" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Id" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding Id,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="3" x:Name="GridcontrolType" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Control Type" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumTypeComponent}}" SelectedValue="{Binding TypeComponent,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Label Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Design - positionnement" FontWeight="Bold"/>
+                <Grid Grid.Row="5" x:Name="GridHorizontalSpaceUsage" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Horizontal space usage" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumSpaceType}}" SelectedValue="{Binding HorizontalSpaceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="6" x:Name="GridHorizontalSpaceType" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Horizontal space type" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding HorizontalSpaceUsage,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="7" x:Name="GridVerticalSpaceUsage" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Vertical space usage" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumSpaceType}}" SelectedValue="{Binding VerticalSpaceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="8" x:Name="GridVerticalSpaceType" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Vertical space type" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding VerticalSpaceUsage,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="9" x:Name="GridRowIndex" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Row index" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding RowIndex,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="10" x:Name="GridColumnIndex" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Column Index" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding ColumnIndex,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="11" x:Name="GridRowSpan" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Row span" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding RowSpan,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="12" x:Name="GridColumnsSpan" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Column span" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding ColumnSpan,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Label Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Design - Couleurs" FontWeight="Bold"/>
+                <Grid Grid.Row="14" x:Name="GridBackgroundColor" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Background" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding BackgroundHexColor,UpdateSourceTrigger=PropertyChanged,StringFormat=code : {0}}" FontWeight="SemiBold" FontSize="14" FontStyle="Italic"/>
+                        <xctk:ColorPicker Grid.Column="1" VerticalContentAlignment="Center" SelectedColor="{Binding BackgroundHexColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="15" x:Name="GridForegroundColor" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Foreground" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding ForeGroundHexColor,UpdateSourceTrigger=PropertyChanged,StringFormat=code : {0}}" FontWeight="SemiBold" FontSize="14" FontStyle="Italic"/>
+                        <xctk:ColorPicker  Grid.Column="1" VerticalContentAlignment="Center" SelectedColor="{Binding ForeGroundHexColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="16" x:Name="GridBorderColor" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Boder Color" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding BorderHexColor,UpdateSourceTrigger=PropertyChanged,StringFormat=code : {0}}" FontWeight="SemiBold" FontSize="14" FontStyle="Italic"/>
+                        <xctk:ColorPicker  Grid.Column="1" VerticalContentAlignment="Center" SelectedColor="{Binding BorderHexColor,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="17" x:Name="GridHorizontalAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Horizontal Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumHorizontalAlignement}}" SelectedValue="{Binding HorizontalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="18" x:Name="GridVerticalAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Vertical Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumVerticalAlignement}}" SelectedValue="{Binding VerticalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="19" x:Name="GridHorizontalContentAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="H. content Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumContentHorizontalAlignement}}" SelectedValue="{Binding ContentHorizontalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="20" x:Name="GridVerticalContentAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="V. content Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumContentVerticalAlignement}}" SelectedValue="{Binding ContentVerticalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="21" x:Name="GridHorizontalTextAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="H. Text Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumTextHorizontalAlignement}}" SelectedValue="{Binding TextHorizontalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="22" x:Name="GridVerticalTextAlignement" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="V. Text Alignement" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumTextVerticalAlignement}}" SelectedValue="{Binding TextVerticalAlignement,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="23" x:Name="GridFontWeight" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Font weight" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumFontWeight}}" SelectedValue="{Binding FontWeight,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="24" x:Name="GridFontSize" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Font size" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnumFontSize}}" SelectedValue="{Binding FontSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="25" x:Name="GridMargin" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Marge" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding Margin,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="26" x:Name="GridBoderThickness" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Border thickness" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding BorderThickness,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Label Grid.Row="27" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Data" FontWeight="Bold"/>
+                <Grid Grid.Row="28" x:Name="GridDataBoolValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Bool" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <CheckBox Grid.Column="1" IsChecked="{Binding Data.BoolValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="29" x:Name="GridDataByteValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Byte Array" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1" Text="{Binding Data.ByteValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,Converter={StaticResource ByteArrayToStringConverter}}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="30" x:Name="GridDataDateValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Date Value" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <xctk:DateTimePicker Grid.Column="1"  Value="{Binding Data.DateValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="31" x:Name="GridDataFloatValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Float Value" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1"  Text="{Binding Data.FloatValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="32" x:Name="GridDataIntValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Int Value" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1"  Text="{Binding Data.IntValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="33" x:Name="GridDataStringValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="String Value" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1"  Text="{Binding Data.StringValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="34" x:Name="GridDataGroupValue" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Group Value" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                    <TextBox Grid.Column="1"  Text="{Binding Data.GroupValue,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Label Grid.Row="35" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Data to Use" FontWeight="Bold"/>
+                <Grid Grid.Row="36">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Propiétés dispo" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ListView x:Name="ListeViewProprieteDispo" ItemsSource="{Binding ElementName=CurrentUserControl,Path=ListDataValuesTypesDispo,UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto"  Margin="5"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{Binding ElementName=LabelPropriete,Path=ActualHeight}"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" x:Name="ButtonAddProperty" Click="ButtonAddProperty_Click" IsEnabled="{Binding ElementName=ListeViewProprieteDispo,Path=SelectedItem,Converter={StaticResource ObjectToBoolConverter}}" Content="→" FontSize="18" FontWeight="Bold" Margin="5"/>
+                            <Button Grid.Row="1" x:Name="ButtonRemoveProperty" Click="ButtonRemoveProperty_Click" IsEnabled="{Binding ElementName=ListViewProprieteUtilise,Path=SelectedItem,Converter={StaticResource ObjectToBoolConverter}}" Content="←" FontSize="18" FontWeight="Bold" Margin="5"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" x:Name="LabelPropriete" Content="Propiétés utilisées" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ListView x:Name="ListViewProprieteUtilise" ItemsSource="{Binding DataValueType,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Row="1" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="5"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
