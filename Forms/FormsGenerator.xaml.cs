@@ -28,7 +28,7 @@ namespace Forms
         public bool LiveReload { get; set; } = false;
         public FormData Formulaire { get; set; }
         public string FormulaireJson { get; set; } = string.Empty;
-        JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate };
+        JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate};
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

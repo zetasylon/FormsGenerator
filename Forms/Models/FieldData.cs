@@ -11,14 +11,11 @@ namespace Forms.Models
     [AddINotifyPropertyChangedInterface]
     public class FieldData
     {
-        #region Constante
-        #endregion
+
         public FieldData()
         {
             HorizontalAlignement = EnumHorizontalAlignement.Stretch;
             VerticalAlignement = EnumVerticalAlignement.Stretch;
-            Data = new DataValues();
-            Fields = new List<FieldData>();
             Id = Guid.NewGuid();
             ForeGroundHexColor = string.Empty;
             BackgroundHexColor = string.Empty;
@@ -73,10 +70,28 @@ namespace Forms.Models
 
         public Thickness BorderThickness { get; set; }
 
-        public List<FieldData> Fields { get; set; }
+        private List<FieldData> fields;
+        public List<FieldData> Fields
+        {
+            get
+            {
+                if (fields == null) fields = new List<FieldData>();
+                return fields;
+            }
+            set => fields = value;
+        }
 
-        public DataValues Data { get; set; }
+        private DataValues data;
+        public DataValues Data
+        {
+            get
+            {
+                if (data == null) data = new DataValues();
+                return data;
+            }
 
+            set => data = value;
+        }
 
 
         public bool ShouldSerializeFields()
