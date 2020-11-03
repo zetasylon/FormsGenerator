@@ -1,5 +1,6 @@
 ﻿using Forms.Models;
 using Forms.Tools;
+using Newtonsoft.Json;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -24,22 +25,22 @@ namespace Forms
     public partial class FormsGenerator : Window
     {
         GeneratorHelpers generator = new GeneratorHelpers();
-        public bool LiveReload { get; set; } = true;
+        public bool LiveReload { get; set; } = false;
         public FormData Formulaire { get; set; }
         public string FormulaireJson { get; set; } = string.Empty;
-        private readonly JsonSerializerOptions options = new JsonSerializerOptions() { WriteIndented = true };
+        JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate };
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Formulaire = generator.GenerateData();
             generator.GenerateGrid(Formulaire.Field, GridRendu);
-            FormulaireJson = JsonSerializer.Serialize(Formulaire, options);
+            FormulaireJson = JsonConvert.SerializeObject(Formulaire, Formatting.Indented, jsonSettings);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ClearGrid();
-            Formulaire = JsonSerializer.Deserialize<FormData>(FormulaireJson);
+            Formulaire = JsonConvert.DeserializeObject<FormData>(FormulaireJson, jsonSettings);
             generator.GenerateGrid(Formulaire.Field, GridRendu);
         }
 
@@ -59,7 +60,6 @@ namespace Forms
                 TextBoxJson.SelectionLength = SearchtextBox.Text.Length;
                 TextBoxJson.Select(TextBoxJson.SelectionStart, TextBoxJson.SelectionLength);
                 TextBoxJson.ScrollToLine(TextBoxJson.GetLineIndexFromCharacterIndex(TextBoxJson.SelectionStart));
-                // MessageBox("Error");
             }
         }
     }
