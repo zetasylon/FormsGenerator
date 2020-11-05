@@ -18,16 +18,20 @@
             <ColumnDefinition Width="0.75*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" x:Name="gridJson" Background="White">
+        <Grid Grid.Column="0" x:Name="GridDataVizualiser" Background="White">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TreeView Grid.Row="0" x:Name="TreeViewField" Margin="10" ItemsSource="{Binding ElementName=CurrentWindow,Path=FormulaireList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonCreateForms" Content="Create new form" Margin="10" Click="ButtonCreateForms_Click"/>
+            </StackPanel>
+            <TreeView Grid.Row="1" x:Name="TreeViewField" Margin="10" ItemsSource="{Binding ElementName=CurrentWindow,Path=FormulaireList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate  DataType="{x:Type Models:FormData}" ItemsSource="{Binding  Field,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource ClassToCollectionConverter}}">
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="{Binding Name}"/>
+                            <Label Margin="5,0,0,0" FontWeight="Bold" Content="{Binding Name}"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate  DataType="{x:Type Models:FieldData}" ItemsSource="{Binding Fields,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
@@ -65,7 +69,7 @@
                     </HierarchicalDataTemplate>
                 </TreeView.Resources>
             </TreeView>
-            <UserControls:UserControlEditFormData Grid.Row="1" DataContext="{Binding ElementName=TreeViewField,Path=SelectedItem}"/>
+            <UserControls:UserControlEditFormData Grid.Row="2" DataContext="{Binding ElementName=TreeViewField,Path=SelectedItem}"/>
         </Grid>
         <Grid Grid.Column="1" Background="#2980b9">
             <Grid.RowDefinitions>

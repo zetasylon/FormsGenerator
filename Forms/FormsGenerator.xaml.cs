@@ -18,14 +18,14 @@ namespace Forms
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Formulaire = generator.GenerateData();
-            generator.GenerateGrid(Formulaire,null, GridRendu);
+            generator.GenerateGrid(Formulaire, null, GridRendu);
             FormulaireList = new ObservableCollection<FormData>() { Formulaire };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ClearGrid();
-            generator.GenerateGrid(Formulaire,null, GridRendu);
+            generator.GenerateGrid((FormData)TreeViewField.SelectedItem, null, GridRendu);
 
         }
 
@@ -48,5 +48,16 @@ namespace Forms
 
         }
 
+        private void ButtonCreateForms_Click(object sender, RoutedEventArgs e)
+        {
+            FormulaireList.Add(new FormData()
+            {
+                Name = "New Forms",
+                Field = new FieldData()
+                {
+                    Name = "FirstNode"
+                }
+            });
+        }
     }
 }
