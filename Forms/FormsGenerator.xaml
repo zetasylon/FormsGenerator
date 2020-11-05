@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Models="clr-namespace:Forms.Models"
         xmlns:UserControls="clr-namespace:Forms.UserControls"
+         xmlns:Converter ="clr-namespace:Forms.Converters"
         xmlns:local="clr-namespace:Forms"
         mc:Ignorable="d"
         Title="FormsGenerator" Height="1080" Width="1920" WindowState="Maximized" Loaded="Window_Loaded"
         x:Name="CurrentWindow">
+    <Window.Resources>
+        <Converter:ClassToCollectionConverter x:Key="ClassToCollectionConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*"/>
@@ -16,20 +20,60 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" x:Name="gridJson" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <UserControls:UserControlEditFormData Grid.Row="1" DataContext="{Binding ElementName=CurrentWindow,Path=Formulaire.Field}"/>
+            <TreeView Grid.Row="0" x:Name="TreeViewField" Margin="10" ItemsSource="{Binding ElementName=CurrentWindow,Path=FormulaireList,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate  DataType="{x:Type Models:FormData}" ItemsSource="{Binding  Field,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource ClassToCollectionConverter}}">
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <TextBlock Margin="5,0,0,0" FontWeight="Bold" Text="{Binding Name}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate  DataType="{x:Type Models:FieldData}" ItemsSource="{Binding Fields,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" x:Name="ButtonRemoveChildren"  Click="ButtonRemoveChildren_Click" Width="20" Height="20" Content="-" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Right" Margin="5">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Ellipse Fill="#E81123"/>
+                                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Grid.Column="1" x:Name="ButtonAddChildren" Click="ButtonAddChildren_Click" Width="20" Height="20" Content="+" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" HorizontalAlignment="Right" Margin="5">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Grid>
+                                            <Ellipse Fill="#00B294"/>
+                                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <TextBlock Grid.Column="2" Text="{Binding Name}" Height="auto" Margin="5"/>
+                            <TextBlock Grid.Column="3" Text="{Binding TypeComponent}" Height="auto" FontWeight="Bold" Margin="5" Foreground="#0063B1"/>
+
+                        </Grid>
+                    </HierarchicalDataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+            <UserControls:UserControlEditFormData Grid.Row="1" DataContext="{Binding ElementName=TreeViewField,Path=SelectedItem}"/>
         </Grid>
         <Grid Grid.Column="1" Background="#2980b9">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <CheckBox Margin="10" Content="Live reload" FontSize="24" IsChecked="{Binding ElementName=CurrentWindow, Path=LiveReload, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalContentAlignment="Center"/>
-            <Grid Margin="20" Grid.Row="1" x:Name="GridRendu"/>
-            <Button Grid.Row="2" Content="Generer rendu" Width="200" HorizontalAlignment="Right" Margin="10" Height="30" Click="Button_Click"/>
+            <Grid Margin="20" Grid.Row="0" x:Name="GridRendu"/>
+            <Button Grid.Row="1" Content="Generer rendu" Width="200" HorizontalAlignment="Right" Margin="10" Height="30" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

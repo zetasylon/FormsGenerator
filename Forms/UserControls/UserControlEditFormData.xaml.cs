@@ -39,8 +39,17 @@ namespace Forms.UserControls
         {
             if (DataContext != null)
             {
-                field = DataContext as FieldData;
-                ChangeDataValueTypeDispo();
+                if (DataContext.GetType() == typeof(FieldData))
+                {
+                    field = DataContext as FieldData;
+                    ChangeDataValueTypeDispo();
+                    IsEnabled = true;
+                }
+                else
+                {
+                    IsEnabled = false;
+                }
+
             }
         }
 

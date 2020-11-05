@@ -21,6 +21,8 @@ namespace Forms.Models
             ForeGroundHexColor = string.Empty;
             BackgroundHexColor = string.Empty;
             BorderHexColor = string.Empty;
+            DataValueType = new ObservableCollection<EnumDataValuesType>();
+            fields = new ObservableCollection<FieldData>();
         }
 
         [DefaultValue("")]
@@ -71,12 +73,12 @@ namespace Forms.Models
 
         public Thickness BorderThickness { get; set; }
 
-        private List<FieldData> fields;
-        public List<FieldData> Fields
+        private ObservableCollection<FieldData> fields;
+        public ObservableCollection<FieldData> Fields
         {
             get
             {
-                if (fields == null) fields = new List<FieldData>();
+                if (fields == null) fields = new ObservableCollection<FieldData>();
                 return fields;
             }
             set => fields = value;

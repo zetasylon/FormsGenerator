@@ -375,7 +375,7 @@ namespace Forms.Tools
                     DateValue = DateTime.Now.AddDays(-4)
 
                 },
-                Fields = new List<FieldData>()
+                Fields = new ObservableCollection<FieldData>()
                 {
                     new FieldData()
                     {
@@ -389,7 +389,7 @@ namespace Forms.Tools
                         BackgroundHexColor ="#8F969C",
                         BorderHexColor = "#000000",
                         BorderThickness = new Thickness(1),
-                        Fields = new List<FieldData>()
+                        Fields = new ObservableCollection<FieldData>()
                         {
                             new FieldData()
                             {
@@ -427,7 +427,7 @@ namespace Forms.Tools
                         BackgroundHexColor ="#FFFFFF",
                         BorderHexColor = "#000000",
                         BorderThickness = new Thickness(1),
-                        Fields = new List<FieldData>()
+                        Fields = new ObservableCollection<FieldData>()
                         {
                             new FieldData()
                             {
@@ -439,7 +439,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=0,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -462,7 +462,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -498,7 +498,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -536,7 +536,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=1,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -548,7 +548,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -560,7 +560,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -611,7 +611,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -626,7 +626,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -643,7 +643,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=2,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -655,7 +655,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -667,7 +667,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -703,7 +703,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=1,
                                                 BackgroundHexColor ="#548131",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -714,7 +714,7 @@ namespace Forms.Tools
                                                         VerticalSpaceUsage = 1,
                                                         VerticalSpaceType = EnumSpaceType.Auto,
                                                         RowIndex=0,
-                                                        Fields = new List<FieldData>()
+                                                        Fields = new ObservableCollection<FieldData>()
                                                         {
                                                             new FieldData()
                                                             {
@@ -749,7 +749,7 @@ namespace Forms.Tools
                                                         VerticalSpaceUsage = 1,
                                                         VerticalSpaceType = EnumSpaceType.Auto,
                                                         RowIndex=1,
-                                                        Fields = new List<FieldData>()
+                                                        Fields = new ObservableCollection<FieldData>()
                                                         {
                                                             new FieldData()
                                                             {
@@ -780,7 +780,7 @@ namespace Forms.Tools
                                                         VerticalSpaceUsage = 1,
                                                         VerticalSpaceType = EnumSpaceType.Auto,
                                                         RowIndex=2,
-                                                        Fields = new List<FieldData>()
+                                                        Fields = new ObservableCollection<FieldData>()
                                                         {
                                                             new FieldData()
                                                             {
@@ -823,7 +823,7 @@ namespace Forms.Tools
                                          VerticalAlignement= EnumVerticalAlignement.Center,
                                         ColumnIndex=1,
                                         BackgroundHexColor = "#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -835,7 +835,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 RowIndex=0,
                                                 BackgroundHexColor ="#FFFFFF",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -869,7 +869,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 RowIndex=1,
                                                 BackgroundHexColor ="#FFFFFF",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -905,7 +905,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -922,7 +922,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=3,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -934,7 +934,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -946,7 +946,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -997,7 +997,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1012,7 +1012,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1029,7 +1029,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=4,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -1041,7 +1041,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -1053,7 +1053,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -1104,7 +1104,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1119,7 +1119,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1136,7 +1136,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=5,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -1148,7 +1148,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -1160,7 +1160,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -1211,7 +1211,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1226,7 +1226,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1243,7 +1243,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=6,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -1255,7 +1255,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -1267,7 +1267,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -1318,7 +1318,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1333,7 +1333,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1350,7 +1350,7 @@ namespace Forms.Tools
                                 VerticalSpaceType = EnumSpaceType.Auto,
                                 RowIndex=7,
                                 BackgroundHexColor ="#FFFFFF",
-                                Fields= new List<FieldData>()
+                                Fields= new ObservableCollection<FieldData>()
                                 {
                                     new FieldData()
                                     {
@@ -1362,7 +1362,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=0,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
                                             new FieldData()
                                             {
@@ -1374,7 +1374,7 @@ namespace Forms.Tools
                                                 VerticalSpaceType = EnumSpaceType.Auto,
                                                 ColumnIndex=0,
                                                 BackgroundHexColor ="#8F969C",
-                                                Fields = new List<FieldData>()
+                                                Fields = new ObservableCollection<FieldData>()
                                                 {
                                                     new FieldData()
                                                     {
@@ -1425,7 +1425,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=1,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
@@ -1440,7 +1440,7 @@ namespace Forms.Tools
                                         VerticalSpaceType = EnumSpaceType.Auto,
                                         ColumnIndex=2,
                                         BackgroundHexColor ="#FFFFFF",
-                                        Fields = new List<FieldData>()
+                                        Fields = new ObservableCollection<FieldData>()
                                         {
 
                                         }
