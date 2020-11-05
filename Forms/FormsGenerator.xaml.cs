@@ -18,14 +18,14 @@ namespace Forms
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Formulaire = generator.GenerateData();
-            generator.GenerateGrid(Formulaire.Field, GridRendu);
+            generator.GenerateGrid(Formulaire,null, GridRendu);
             FormulaireList = new ObservableCollection<FormData>() { Formulaire };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ClearGrid();
-            generator.GenerateGrid(Formulaire.Field, GridRendu);
+            generator.GenerateGrid(Formulaire,null, GridRendu);
 
         }
 

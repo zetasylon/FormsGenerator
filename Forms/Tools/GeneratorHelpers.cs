@@ -20,108 +20,113 @@ namespace Forms.Tools
         /// </summary>
         /// <param name="formData"></param>
         /// <returns></returns>
-        public void GenerateGrid(FieldData fieldData, Grid currentGrid)
+        public void GenerateGrid(FormData Formulaire, FieldData fieldData, Grid currentGrid)
         {
-
-            foreach (var item in fieldData.Fields)
+            if (Formulaire != null)
             {
-                var needBorder = (item.BorderThickness != new Thickness() && !string.IsNullOrEmpty(item.BorderHexColor));
-                var border = new Border();
+                PopulateGrid(Formulaire.Field, currentGrid);
+                return;
+            }
+            foreach (var item in fieldData.Fields) PopulateGrid(item, currentGrid);
 
-                Grid subgrid = new Grid();
-                if (needBorder)
-                {
-                    border.Child = subgrid;
-                    border.BorderThickness = item.BorderThickness;
-                    border.BorderBrush = (Brush)new BrushConverter().ConvertFromString(item.BorderHexColor);
-                }
+        }
+        public void PopulateGrid(FieldData item, Grid currentGrid)
+        {
+            var needBorder = (item.BorderThickness != new Thickness() && !string.IsNullOrEmpty(item.BorderHexColor));
+            var border = new Border();
 
-                Control control = new Control();
+            Grid subgrid = new Grid();
+            if (needBorder)
+            {
+                border.Child = subgrid;
+                border.BorderThickness = item.BorderThickness;
+                border.BorderBrush = (Brush)new BrushConverter().ConvertFromString(item.BorderHexColor);
+            }
 
-                switch (item.TypeComponent)
-                {
-                    case EnumTypeComponent.NonRenseigne:
-                        break;
-                    case EnumTypeComponent.Combobox:
-                        break;
-                    case EnumTypeComponent.Label:
+            Control control = new Control();
 
-                        control = GenerateLabel(item);
-                        currentGrid.Children.Add(control);
+            switch (item.TypeComponent)
+            {
+                case EnumTypeComponent.NonRenseigne:
+                    break;
+                case EnumTypeComponent.Combobox:
+                    break;
+                case EnumTypeComponent.Label:
 
-                        break;
-                    case EnumTypeComponent.Grid:
+                    control = GenerateLabel(item);
+                    currentGrid.Children.Add(control);
 
-                        subgrid.VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement);
-                        subgrid.HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement);
+                    break;
+                case EnumTypeComponent.Grid:
 
-                        if (!string.IsNullOrEmpty(item.BackgroundHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
-                        if (!string.IsNullOrEmpty(item.BorderHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
+                    subgrid.VerticalAlignment = GetVerticalAlignment(item.VerticalAlignement);
+                    subgrid.HorizontalAlignment = GetHorizontalAlignment(item.HorizontalAlignement);
 
-
-                        if (item.ColumnIndex > currentGrid.ColumnDefinitions.Count - 1)
-                        {
-                            currentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(item.HorizontalSpaceUsage, GetGridUnitType(item.HorizontalSpaceType)) });
-
-                            if (needBorder) Grid.SetRow(border, item.RowIndex);
-                            else Grid.SetColumn(subgrid, item.ColumnIndex);
-                        }
-                        if (item.RowIndex > currentGrid.RowDefinitions.Count - 1)
-                        {
-                            currentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(item.VerticalSpaceUsage, GetGridUnitType(item.VerticalSpaceType)) });
-
-                            if (needBorder) Grid.SetRow(border, item.RowIndex);
-                            else Grid.SetRow(subgrid, item.RowIndex);
-                        }
+                    if (!string.IsNullOrEmpty(item.BackgroundHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
+                    if (!string.IsNullOrEmpty(item.BorderHexColor)) subgrid.Background = (Brush)new BrushConverter().ConvertFromString(item.BackgroundHexColor);
 
 
-                        if (needBorder)
-                        {
-                            currentGrid.Children.Add(border);
-                            if (item.ColumnSpan > 0) Grid.SetColumnSpan(border, item.ColumnSpan);
-                            if (item.RowSpan > 0) Grid.SetRowSpan(border, item.RowSpan);
+                    if (item.ColumnIndex > currentGrid.ColumnDefinitions.Count - 1)
+                    {
+                        currentGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(item.HorizontalSpaceUsage, GetGridUnitType(item.HorizontalSpaceType)) });
 
-                        }
-                        else
-                        {
-                            currentGrid.Children.Add(subgrid);
-                            if (item.ColumnSpan > 0) Grid.SetColumnSpan(subgrid, item.ColumnSpan);
-                            if (item.RowSpan > 0) Grid.SetRowSpan(subgrid, item.RowSpan);
+                        if (needBorder) Grid.SetRow(border, item.RowIndex);
+                        else Grid.SetColumn(subgrid, item.ColumnIndex);
+                    }
+                    if (item.RowIndex > currentGrid.RowDefinitions.Count - 1)
+                    {
+                        currentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(item.VerticalSpaceUsage, GetGridUnitType(item.VerticalSpaceType)) });
 
-                        }
+                        if (needBorder) Grid.SetRow(border, item.RowIndex);
+                        else Grid.SetRow(subgrid, item.RowIndex);
+                    }
 
 
-                        break;
-                    case EnumTypeComponent.Checkbox:
+                    if (needBorder)
+                    {
+                        currentGrid.Children.Add(border);
+                        if (item.ColumnSpan > 0) Grid.SetColumnSpan(border, item.ColumnSpan);
+                        if (item.RowSpan > 0) Grid.SetRowSpan(border, item.RowSpan);
 
-                        control = GenerateCheckBox(item);
-                        currentGrid.Children.Add(control);
+                    }
+                    else
+                    {
+                        currentGrid.Children.Add(subgrid);
+                        if (item.ColumnSpan > 0) Grid.SetColumnSpan(subgrid, item.ColumnSpan);
+                        if (item.RowSpan > 0) Grid.SetRowSpan(subgrid, item.RowSpan);
 
-                        break;
-                    case EnumTypeComponent.RadioButton:
+                    }
 
-                        control = GenerateRadioButton(item);
-                        currentGrid.Children.Add(control);
 
-                        break;
-                    case EnumTypeComponent.Textbox:
+                    break;
+                case EnumTypeComponent.Checkbox:
 
-                        control = GenerateTextBox(item);
-                        currentGrid.Children.Add(control);
+                    control = GenerateCheckBox(item);
+                    currentGrid.Children.Add(control);
 
-                        break;
-                    case EnumTypeComponent.OptionText:
-                        break;
+                    break;
+                case EnumTypeComponent.RadioButton:
 
-                    default:
-                        break;
-                }
+                    control = GenerateRadioButton(item);
+                    currentGrid.Children.Add(control);
 
-                if (item.Fields != null && item.Fields.Count > 0)
-                {
-                    GenerateGrid(item, subgrid);
-                }
+                    break;
+                case EnumTypeComponent.Textbox:
 
+                    control = GenerateTextBox(item);
+                    currentGrid.Children.Add(control);
+
+                    break;
+                case EnumTypeComponent.OptionText:
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (item.Fields != null && item.Fields.Count > 0)
+            {
+                GenerateGrid(null, item, subgrid);
             }
         }
 

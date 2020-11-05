@@ -31,7 +31,7 @@ namespace Forms
             GeneratorHelpers generator = new GeneratorHelpers();
 
             formData = generator.GenerateData();
-            generator.GenerateGrid(formData.Field, ContentGrid);
+            generator.GenerateGrid(formData,null, ContentGrid);
         }
     }
 }
